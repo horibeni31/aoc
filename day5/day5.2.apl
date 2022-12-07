@@ -8,6 +8,6 @@ s←↓⌽⍉↑(¯1+⍴stacks)↑{⍵⊆⍨0≠ 4 | ⍳⍴⍵} ¨ stacks ⍝ tr
 s2←{(⍵≠' ') /⍵}¨{⍵[2]}¨¨s ⍝ remove trailing spaces and brackets
 
 c←⍎¨⊃¨¨{~⍵∊'movefromto ':⍵ ⋄ ''}¨¨commands ⍝ removing text from the command
-
-{(((⊃s2[⍵[2]])←((⍴⊃s2[⍵[2]])-⍵[1])↑⊃s2[⍵[2]])⊢(⊃s2[⍵[3]])←(⊃s2[⍵[3]]),((⍴⊃s2[⍵[2]])-⍵[1])↓⊃s2[⍵[2]])⊢⍵}¨c ⍝modify the destination stack
+⍝ modifying the source stack                        - modifying the destination stack                      -not modifying the command array    
+{(((⊃s2[⍵[2]])←((⍴⊃s2[⍵[2]])-⍵[1])↑⊃s2[⍵[2]])    ⊢   (⊃s2[⍵[3]])←(⊃s2[⍵[3]]),((⍴⊃s2[⍵[2]])-⍵[1])↓⊃s2[⍵[2]])⊢⍵}¨c ⍝modify the destination stack
 ⎕←(⊃⌽)¨s2
